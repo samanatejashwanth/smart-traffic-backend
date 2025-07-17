@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Traffic Suggestion</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gradient-to-br from-gray-900 to-blue-900 min-h-screen flex items-center justify-center px-4">
+    <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-2xl transition-all duration-300 ease-in-out">
+      <h1 class="text-4xl font-bold text-center mb-8 text-blue-700 tracking-wide">
+        🚦 Smart Traffic Suggestion
+      </h1>
+
+      <!-- Suggestion Form -->
+      <form id="suggestionForm" class="space-y-5">
+        <div>
+          <label for="location" class="block text-gray-800 font-semibold mb-1">📍 Location</label>
+          <input
+            type="text"
+            id="location"
+            placeholder="e.g., Hyderabad"
+            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="congestion" class="block text-gray-800 font-semibold mb-1">🚗 Congestion Level</label>
+          <select
+            id="congestion"
+            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          >
+            <option value="">-- Select --</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold py-3 rounded-lg hover:opacity-90 transition duration-200"
+        >
+          Get Smart Route 🚗
+        </button>
+      </form>
+
+      <!-- Suggestion Result -->
+      <div
+        id="result"
+        class="mt-6 text-center text-lg font-semibold hidden transition-all duration-500 ease-in-out transform"
+      ></div>
+
+      <hr class="my-10 border-t border-gray-300" />
+
+      <!-- Feedback Section -->
+      <h2 class="text-2xl font-bold text-center mb-6 text-purple-700">
+        📝 Submit Traffic Feedback
+      </h2>
+
+      <form id="feedbackForm" class="space-y-5">
+        <div>
+          <label for="feedbackLocation" class="block text-gray-800 font-semibold mb-1">📍 Location</label>
+          <input
+            type="text"
+            id="feedbackLocation"
+            placeholder="e.g., Hyderabad"
+            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="feedbackText" class="block text-gray-800 font-semibold mb-1">💬 Feedback</label>
+          <textarea
+            id="feedbackText"
+            placeholder="Write your feedback here..."
+            rows="3"
+            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+            required
+          ></textarea>
+        </div>
+
+        <div>
+          <label for="rating" class="block text-gray-800 font-semibold mb-1">⭐ Rating (1–5)</label>
+          <input
+            type="number"
+            id="rating"
+            min="1"
+            max="5"
+            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-gradient-to-r from-purple-600 to-purple-800 text-white font-bold py-3 rounded-lg hover:opacity-90 transition duration-200"
+        >
+          Submit Feedback
+        </button>
+      </form>
+
+      <!-- Feedback Result -->
+      <div
+        id="feedbackResult"
+        class="mt-6 text-center text-lg font-semibold text-green-600 hidden transition-all duration-500 ease-in-out"
+      ></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
