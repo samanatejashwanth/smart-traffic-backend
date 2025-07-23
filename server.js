@@ -1,12 +1,13 @@
-// server.js
-
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const path = require('path'); // For serving static files
 const connectDB = require('./config/db');
+
+// Route imports
 const suggestionRoutes = require('./routes/suggestionRoutes');
 const feedbackRoutes = require('./routes/feedbackRoutes');
-const authRoutes = require('./routes/authRoutes'); // ✅ Admin login route
+const authRoutes = require('./routes/authRoutes');
 const errorHandler = require('./middleware/errorMiddleware');
 
 // Load environment variables
@@ -21,12 +22,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Routes
+// Serve static files from "public" folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+// API routes
 app.use('/api/suggestions', suggestionRoutes);
 app.use('/api/feedback', feedbackRoutes);
-app.use('/api/admin', authRoutes); // ✅ Admin login route
+app.use('/api/admin', authRoutes);
 
-// Error handling middleware
+// Custom error handler
 app.use(errorHandler);
 
 // Start server
